@@ -36,6 +36,9 @@ module ParamsSanitizer::Sanitizers
     module SanitizerMethods
       # Define rule of reject value.
       #
+      # @example
+      #   reject_value(:user_name, nil, ['admin','root'])
+      #
       # @param key           [String]        key of parameter.
       # @param default_value [Object]        default values when input not addmitted value.
       # @param reject_values [Array<Object>] reject values.

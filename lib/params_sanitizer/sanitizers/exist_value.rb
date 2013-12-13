@@ -17,6 +17,9 @@ module ParamsSanitizer::Sanitizers
     module SanitizerMethods
       # Define rule of exist_value
       #
+      # @example
+      #   exist_value(:keyword, '')
+      #
       # @param key           [String] key of parameter.
       # @param default_value [Object] default values when input not exist value or nil.
       def exist_value(key, default_value, min = nil, max = nil)

@@ -36,6 +36,9 @@ module ParamsSanitizer::Sanitizers
     module SanitizerMethods
       # Define rule of accept regex.
       #
+      # @example
+      #   accept_regex(:age, 0, /^\d+$/)
+      #
       # @param key           [String] key of parameter.
       # @param default_value [Object] default values when input not addmitted value.
       # @param regex         [Regexp] accept when regex match.

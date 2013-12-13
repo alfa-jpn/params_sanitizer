@@ -39,6 +39,9 @@ module ParamsSanitizer::Sanitizers
     module SanitizerMethods
       # Define rule of reject range.
       #
+      # @example
+      #   reject_range(:age, 100, 100, nil)  # max 100.
+      #
       # @param key           [String]        key of parameter.
       # @param default_value [Object]        default values when input not addmitted value.
       # @param min            [Integer] range of min.(when do not set a limit, nil)

@@ -36,6 +36,9 @@ module ParamsSanitizer::Sanitizers
     module SanitizerMethods
       # Define rule of reject regex.
       #
+      # @example
+      #   reject_regex(:number, 0, /^\w$/)
+      #
       # @param key           [String] key of parameter.
       # @param default_value [Object] default values when input not addmitted value.
       # @param regex         [Regexp] reject when regex match.

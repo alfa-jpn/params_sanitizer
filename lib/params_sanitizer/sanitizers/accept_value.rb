@@ -36,6 +36,9 @@ module ParamsSanitizer::Sanitizers
     module SanitizerMethods
       # Define rule of accept value.
       #
+      # @example
+      #   accept_value(:order, 0, ['0','1'])
+      #
       # @param key           [String]        key of parameter.
       # @param default_value [Object]        default values when input not addmitted value.
       # @param accept_values [Array<Object>] accept values.
