@@ -51,7 +51,7 @@ result.
   unknown_params: 'hogehogehoge',
 }
 
-after sanitize
+# after sanitize
 
 {
   word: 'japanese anime',
@@ -71,7 +71,7 @@ when params nest.
 def search_params
   SearchParamsSanitizer.sanitize(params, :search)  # can get sanitized params.
 end
-``
+```
 
 result.
 
