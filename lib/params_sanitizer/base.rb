@@ -1,8 +1,20 @@
 module ParamsSanitizer
   require 'params_sanitizer/sanitizers/accept_value'
+  require 'params_sanitizer/sanitizers/reject_value'
+  require 'params_sanitizer/sanitizers/accept_range'
+  require 'params_sanitizer/sanitizers/reject_range'
+  require 'params_sanitizer/sanitizers/accept_regex'
+  require 'params_sanitizer/sanitizers/reject_regex'
+  require 'params_sanitizer/sanitizers/exist_value'
 
   class Base
     include ParamsSanitizer::Sanitizers::AcceptValue
+    include ParamsSanitizer::Sanitizers::RejectValue
+    include ParamsSanitizer::Sanitizers::AcceptRange
+    include ParamsSanitizer::Sanitizers::RejectRange
+    include ParamsSanitizer::Sanitizers::AcceptRegex
+    include ParamsSanitizer::Sanitizers::RejectRegex
+    include ParamsSanitizer::Sanitizers::ExistValue
 
     # Check a duplicated definition rule of parameter.
     #

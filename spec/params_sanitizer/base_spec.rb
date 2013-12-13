@@ -10,8 +10,14 @@ describe ParamsSanitizer::Base do
     expect(sanitizer1.definitions.equal?(sanitizer2.definitions)).to be_false
   end
 
-  it 'included sanitizers' do
+  it 'included sanitizers methods.' do
     expect(ParamsSanitizer::Base.methods.include?(:accept_value)).to be_true
+    expect(ParamsSanitizer::Base.methods.include?(:reject_value)).to be_true
+    expect(ParamsSanitizer::Base.methods.include?(:accept_range)).to be_true
+    expect(ParamsSanitizer::Base.methods.include?(:reject_range)).to be_true
+    expect(ParamsSanitizer::Base.methods.include?(:accept_regex)).to be_true
+    expect(ParamsSanitizer::Base.methods.include?(:reject_regex)).to be_true
+    expect(ParamsSanitizer::Base.methods.include?(:exist_value)).to be_true
   end
 
   it 'check_duplicated_definition! method can check duplicated.' do
@@ -41,6 +47,17 @@ describe ParamsSanitizer::Base do
     params.should_receive(:permit).with([:nyaruko]).and_return(params)
 
     sanitizer.sanitize(params)
+  end
+
+  it 'permit_filter enable.' do
+    ParamsSanitizer::Base.stub(:permit_filter).and_return([:nyaruko])
+    ParamsSanitizer::Base.stub(:definitions).and_return({})
+
+    sanitizer = Class.new(ParamsSanitizer::Base)
+    params    = ActionController::Parameters.new({nyaruko: 'kawaii', suiginto: 'kaminoryouiki'})
+    sanitized = sanitizer.sanitize(params)
+
+    expect(sanitized.eql?({nyaruko: 'kawaii'})).to be_true
   end
 
   it 'sanitize_params call sanitizer.' do

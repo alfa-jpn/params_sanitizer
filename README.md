@@ -1,6 +1,6 @@
 # ParamsSanitizer
 
-TODO: Write a gem description
+params_sanitizer sanitize parameter.It is really easy and useful.
 
 ## Installation
 
@@ -17,8 +17,67 @@ Or install it yourself as:
     $ gem install params_sanitizer
 
 ## Usage
+For example. sanitize params for a search query.
+### Define sanitizer.
 
-TODO: Write usage instructions here
+``` ruby
+class SearchParamsSanitizer < ParamsSanitizer::Base
+  def self.permit_filter
+    [:word, :order]
+  end
+
+  exist_value  :word,  ''         # set default value '', when param[:word] does not exist.
+  accept_value :order, 1 , [0,1]  # set default value 1, when param[:order] is not 0 or 1.
+end
+```
+
+and in controller
+
+``` ruby
+def search_params
+  SearchParamsSanitizer.sanitize(params)  # can get sanitized params.
+end
+``
+
+result.
+
+``` ruby
+{
+  word: 'japanese anime',
+  unknown_params: 'hogehogehoge',
+}
+
+after sanitize
+
+{
+  word: 'japanese anime',
+  order: 1
+}
+```
+
+when params nest.
+
+``` ruby
+{
+  search: { word: 'japanese anime' }
+}
+```
+
+``` ruby
+def search_params
+  SearchParamsSanitizer.sanitize(params, :search)  # can get sanitized params.
+end
+``
+
+result.
+
+``` ruby
+{
+  word: 'japanese anime',
+  order: 1
+}
+```
+
 
 ## Contributing
 

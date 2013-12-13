@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = ParamsSanitizer::VERSION
   spec.authors       = ["alfa-jpn"]
   spec.email         = ["a.nkmr.ja@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = "params_sanitizer sanitize parameter.It is really easy and useful."
+  spec.summary       = "params_sanitizer sanitize parameter.It is really easy and useful."
+  spec.homepage      = "https://github.com/alfa-jpn/params_sanitizer"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
